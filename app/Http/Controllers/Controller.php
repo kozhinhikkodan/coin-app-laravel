@@ -21,6 +21,9 @@ class Controller extends BaseController
     public function index()
     {
         $coins = Coins::all();
+        foreach ($coins as $coin) {
+            $coin->market = $coin->market?'UP':'DOWN';
+        }
         return response()->json($coins);
     }
 
@@ -32,6 +35,7 @@ class Controller extends BaseController
             'name' => 'required|string|max:255',
             'logo' => 'required|file',
             'price' => 'required|string|max:255',
+            'market' => 'required|string|max:255',
         ]);
         // if validator fails return error
         if ($validator->fails()) {

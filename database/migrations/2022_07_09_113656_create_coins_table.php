@@ -18,6 +18,7 @@ class CreateCoinsTable extends Migration
             $table->string('name', 255);
             $table->string('logo', 255);
             $table->string('price', 255);
+            $table->string('market', 255);
             $table->timestamps();
         });
     }
